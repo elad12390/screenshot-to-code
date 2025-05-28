@@ -221,6 +221,39 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
             font-family: var(--font-primary, {{font_primary}}), system-ui, sans-serif;
         - Include font weights as template variables if they vary (e.g., {{font_primary_weight}})
     </requirement>
+    <requirement>Use vmin-based absolute positioning for layout:
+        - Position all elements absolutely relative to the viewport
+        - Use vmin units for all positioning (top, left, right, bottom) and dimensions (width, height)
+        - Calculate positions based on the original design's proportions
+        - Example: if an element is at 20% from top and 30% from left in the original design:
+            position: absolute;
+            top: 20vmin;
+            left: 30vmin;
+        - Use vmin for font sizes to maintain text proportions
+        - Use vmin for padding and margins to maintain spacing proportions
+        - Ensure all elements scale proportionally with the viewport size
+        - Maintain aspect ratios using vmin-based calculations
+    </requirement>
+    <requirement>Make all font sizes resolution-relative:
+        - Use vmin units for all font sizes to scale with viewport size
+        - Calculate font sizes based on the original design's proportions
+        - Example: if a heading is 24px in a 1920x1080 design:
+            font-size: calc(24 * (100vmin / 1080));
+        - Use CSS custom properties for font size ratios:
+            :root {
+                --font-size-base: calc(16 * (100vmin / 1080));
+                --font-size-h1: calc(2.5 * var(--font-size-base));
+                --font-size-h2: calc(2 * var(--font-size-base));
+                --font-size-h3: calc(1.75 * var(--font-size-base));
+                --font-size-body: var(--font-size-base);
+                --font-size-small: calc(0.875 * var(--font-size-base));
+            }
+        - Apply font sizes using the custom properties:
+            h1 { font-size: var(--font-size-h1); }
+            p { font-size: var(--font-size-body); }
+        - Ensure text remains readable at all viewport sizes
+        - Maintain proper line heights using vmin units
+    </requirement>
     <requirement>Use CSS variables for:
         - Colors (--color-primary, --color-secondary, etc.)
         - Fonts (--font-primary, --font-secondary, etc.)
