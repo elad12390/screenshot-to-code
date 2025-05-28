@@ -250,13 +250,13 @@ IMPORTED_CODE_HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
             - Preserve text alignment within containers
     </requirement>
     <requirement>Make all font sizes resolution-relative:
-        - Use vmin units for all font sizes to scale with viewport size
+        - Use vw units for all font sizes to scale with viewport width
         - Calculate font sizes based on the original design's proportions
         - Example: if a heading is 24px in a 1920x1080 design:
-            font-size: calc(24 * (100vmin / 1080));
+            font-size: calc(24 * (100vw / 1920));
         - Use CSS custom properties for font size ratios:
             :root {
-                --font-size-base: calc(16 * (100vmin / 1080));
+                --font-size-base: calc(16 * (100vw / 1920));
                 --font-size-h1: calc(2.5 * var(--font-size-base));
                 --font-size-h2: calc(2 * var(--font-size-base));
                 --font-size-h3: calc(1.75 * var(--font-size-base));
@@ -267,7 +267,7 @@ IMPORTED_CODE_HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
             h1 { font-size: var(--font-size-h1); }
             p { font-size: var(--font-size-body); }
         - Ensure text remains readable at all viewport sizes
-        - Maintain proper line heights using vmin units
+        - Maintain proper line heights using vw units
     </requirement>
     <requirement>Use CSS variables for:
         - Colors (--color-primary, --color-secondary, etc.)
@@ -293,6 +293,58 @@ IMPORTED_CODE_HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
 </output>
 """
 
+IMPORTED_CODE_ANGULAR_IONIC_SYSTEM_PROMPT = """
+<role>You are an expert Angular/Ionic developer.</role>
+
+<requirements>
+    <requirement>Do not add comments in the code such as "<!-- Add other navigation links as needed -->" and "<!-- ... other news items ... -->" in place of writing the full code. WRITE THE FULL CODE.</requirement>
+    <requirement>Repeat elements as needed. For example, if there are 15 items, the code should have 15 items. DO NOT LEAVE comments like "<!-- Repeat for each news item -->" or bad things will happen.</requirement>
+    <requirement>For images, use placeholder images from https://placehold.co and include a detailed description of the image in the alt text so that an image generation AI can generate the image later.</requirement>
+    <requirement>Use Angular 18 with Signals for state management:
+        - Use signal() for reactive state
+        - Use computed() for derived state
+        - Use effect() for side effects
+        - Use model() for two-way binding
+        - Example:
+            const count = signal(0);
+            const doubled = computed(() => count() * 2);
+            effect(() => console.log('Count changed:', count()));
+    </requirement>
+    <requirement>Use Ionic 17 components and features:
+        - Use Ionic components with proper imports
+        - Use Ionic's built-in animations and transitions
+        - Use Ionic's theming system
+        - Use Ionic's responsive grid system
+    </requirement>
+</requirements>
+
+<libraries>
+    <library>Use these scripts to include Angular and Ionic:
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@angular/core@18.0.0/bundles/core.umd.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@angular/common@18.0.0/bundles/common.umd.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@angular/platform-browser@18.0.0/bundles/platform-browser.umd.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@angular/platform-browser-dynamic@18.0.0/bundles/platform-browser-dynamic.umd.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@7.0.0/dist/ionic/ionic.esm.js"></script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@7.0.0/dist/ionic/ionic.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@7.0.0/css/ionic.bundle.css" />
+    </library>
+    <library>Use this script to include Tailwind: <script src="https://cdn.tailwindcss.com"></script></library>
+    <library>You can use Google Fonts</library>
+    <library>ionicons for icons, add the following <script> tags near the end of the page, right before the closing </body> tag:
+        <script type="module">
+            import ionicons from 'https://cdn.jsdelivr.net/npm/ionicons/+esm'
+        </script>
+        <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/esm/ionicons.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/ionicons/dist/collection/components/icon/icon.min.css" rel="stylesheet">
+    </library>
+</libraries>
+
+<output>
+    Return only the full code in <html></html> tags.
+    Do not include markdown "```" or "```html" at the start or end.
+</output>
+"""
+
 IMPORTED_CODE_SYSTEM_PROMPTS = SystemPrompts(
     html_tailwind=IMPORTED_CODE_TAILWIND_SYSTEM_PROMPT,
     html_css=IMPORTED_CODE_HTML_CSS_SYSTEM_PROMPT,
@@ -302,4 +354,5 @@ IMPORTED_CODE_SYSTEM_PROMPTS = SystemPrompts(
     vue_tailwind=IMPORTED_CODE_VUE_TAILWIND_SYSTEM_PROMPT,
     svg=IMPORTED_CODE_SVG_SYSTEM_PROMPT,
     html_css_template=IMPORTED_CODE_HTML_CSS_TEMPLATE_SYSTEM_PROMPT,
+    angular_ionic=IMPORTED_CODE_ANGULAR_IONIC_SYSTEM_PROMPT,
 )

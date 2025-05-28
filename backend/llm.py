@@ -33,6 +33,7 @@ class Llm(Enum):
     GEMINI_2_0_FLASH = "gemini-2.0-flash"
     GEMINI_2_0_PRO_EXP = "gemini-2.0-pro-exp-02-05"
     O1_2024_12_17 = "o1-2024-12-17"
+    O4_MINI_2025_04_16 = "o4-mini-2025-04-16"
 
 
 class Completion(TypedDict):

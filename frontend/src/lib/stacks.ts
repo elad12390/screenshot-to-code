@@ -9,6 +9,7 @@ export enum Stack {
   IONIC_TAILWIND = "ionic_tailwind",
   SVG = "svg",
   HTML_CSS_TEMPLATE = "html_css_template",
+  ANGULAR_IONIC = "angular_ionic",
 }
 
 export const STACK_DESCRIPTIONS: {
@@ -22,4 +23,5 @@ export const STACK_DESCRIPTIONS: {
   ionic_tailwind: { components: ["Ionic", "Tailwind"], inBeta: true },
   svg: { components: ["SVG"], inBeta: true },
   html_css_template: { components: ["HTML", "CSS", "Template Variables"], inBeta: false },
+  angular_ionic: { components: ["Angular 18", "Ionic 17", "Signals"], inBeta: true },
 };
