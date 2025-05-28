@@ -221,18 +221,42 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
             font-family: var(--font-primary, {{font_primary}}), system-ui, sans-serif;
         - Include font weights as template variables if they vary (e.g., {{font_primary_weight}})
     </requirement>
-    <requirement>Use vmin-based absolute positioning for layout:
+    <requirement>Use viewport-based positioning for layout:
         - Position all elements absolutely relative to the viewport
-        - Use vmin units for all positioning (top, left, right, bottom) and dimensions (width, height)
+        - Use vh units for vertical positioning (top, bottom)
+        - Use vw units for horizontal positioning (left, right)
         - Calculate positions based on the original design's proportions
         - Example: if an element is at 20% from top and 30% from left in the original design:
             position: absolute;
-            top: 20vmin;
-            left: 30vmin;
+            top: 20vh;
+            left: 30vw;
         - Use vmin for font sizes to maintain text proportions
         - Use vmin for padding and margins to maintain spacing proportions
         - Ensure all elements scale proportionally with the viewport size
         - Maintain aspect ratios using vmin-based calculations
+    </requirement>
+    <requirement>Ensure precise text positioning:
+        - Calculate exact position percentages from the original design
+        - Example: if main text is at 60% from top in original 1920x1080 design:
+            position: absolute;
+            top: 60vh;
+        - Maintain exact horizontal alignment:
+            - For left-aligned text: left: Xvw;
+            - For center-aligned text: left: 50vw; transform: translateX(-50%);
+            - For right-aligned text: right: Xvw;
+        - Preserve text block dimensions:
+            - Calculate width based on original design's proportions
+            - Use max-width to prevent text from becoming too wide
+            - Example: width: calc(800 * (100vw / 1920));
+        - Maintain text spacing:
+            - Calculate line-height based on original design
+            - Preserve letter-spacing and word-spacing
+            - Keep paragraph margins proportional
+        - Ensure text containers scale properly:
+            - Use vh for vertical padding and margins
+            - Use vw for horizontal padding and margins
+            - Maintain aspect ratios of text blocks
+            - Preserve text alignment within containers
     </requirement>
     <requirement>Make all font sizes resolution-relative:
         - Use vmin units for all font sizes to scale with viewport size
@@ -254,6 +278,19 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
         - Ensure text remains readable at all viewport sizes
         - Maintain proper line heights using vmin units
     </requirement>
+    <requirement>Use Lorem Picsum for all image placeholders:
+        - Use the format: https://picsum.photos/{width}/{height}
+        - For square images: https://picsum.photos/{size}
+        - Add ?random={number} to prevent caching when multiple images are used
+        - Use specific images when needed: https://picsum.photos/id/{id}/{width}/{height}
+        - Add ?grayscale for grayscale images
+        - Add ?blur={1-10} for blurred images
+        - Include detailed alt text describing the image content
+        - Use WebP format for better performance: https://picsum.photos/{width}/{height}.webp
+        - Example usage:
+            <img src="https://picsum.photos/800/600?random=1" alt="A beautiful landscape with mountains and a lake">
+            <img src="https://picsum.photos/400/400?grayscale&blur=2" alt="A grayscale portrait with soft focus">
+    </requirement>
     <requirement>Use CSS variables for:
         - Colors (--color-primary, --color-secondary, etc.)
         - Fonts (--font-primary, --font-secondary, etc.)
@@ -267,7 +304,6 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
     <requirement>Ensure all interactive elements are accessible</requirement>
     <requirement>Do not add comments in the code such as "<!-- Add other navigation links as needed -->" and "<!-- ... other news items ... -->" in place of writing the full code. WRITE THE FULL CODE.</requirement>
     <requirement>Repeat elements as needed. For example, if there are 15 items, the code should have 15 items. DO NOT LEAVE comments like "<!-- Repeat for each news item -->" or bad things will happen.</requirement>
-    <requirement>For images, use placeholder images from https://placehold.co and include a detailed description of the image in the alt text so that an image generation AI can generate the image later.</requirement>
 </requirements>
 
 <libraries>
