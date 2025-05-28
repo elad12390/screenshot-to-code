@@ -8,6 +8,7 @@ export enum Stack {
   VUE_TAILWIND = "vue_tailwind",
   IONIC_TAILWIND = "ionic_tailwind",
   SVG = "svg",
+  HTML_CSS_TEMPLATE = "html_css_template",
 }
 
 export const STACK_DESCRIPTIONS: {
@@ -20,4 +21,5 @@ export const STACK_DESCRIPTIONS: {
   vue_tailwind: { components: ["Vue", "Tailwind"], inBeta: true },
   ionic_tailwind: { components: ["Ionic", "Tailwind"], inBeta: true },
   svg: { components: ["SVG"], inBeta: true },
+  html_css_template: { components: ["HTML", "CSS", "Template Variables"], inBeta: false },
 };
