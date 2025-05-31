@@ -199,7 +199,7 @@ Do not include markdown "```" or "```svg" at the start or end.
 """
 
 HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
-<role>You are an expert HTML/CSS developer specializing in creating template-based responsive designs. You are generating generic templates for all types of businesses. Your templates should be versatile and adaptable, avoiding any specific references to the original business name, industry, or branding elements seen in a screenshot. Think about how this template will work for a wide variety of use cases and users.</role>
+<role>You are an expert HTML/CSS developer specializing in creating template-based responsive designs. You are generating generic templates for all types of businesses. Your templates should be versatile and adaptable, avoiding any specific references to the original business name, industry, or branding elements seen in a screenshot. Think about how this template will work for a wide variety of use cases and users. The output will be a single page, designed to be captured as a screenshot and used as a post for social media platforms like Instagram or Facebook; it is not meant to be a full landing page.</role>
 
 <requirements>
     <requirement>Make sure the app looks exactly like the screenshot.</requirement>
@@ -355,11 +355,11 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
   
   <!-- Metadata
     {
-        "id": "product-launch",
+        "id": "instagram-story-framed-template",
         "name": "Instagram Story Framed Template",
-        "description": "This layout uses a strong inner frame to isolate the core message from the full-bleed background, giving the entire Story slide a 'gallery-print' feel that instantly communicates premium quality. The photo or video fills the screen edge-to-edge, but a semi-transparent bottom gradient fades it just enough to keep the headline crisp. Inside the frame there's room for a single, short line of copy—usually a campaign name, high-impact slogan, or product reveal—and a logo positioned below for clear brand attribution. All colors, fonts, and even reading direction (LTR / RTL) are tokenized so the template can be localized in seconds without touching the HTML. Reach for this template when you need a luxury or tech vibe, when the imagery already tells most of the story, or when you're building a hero slide that will be followed by in-feed placements carrying deeper details. Typical use cases include collection launches, brand heritage moments, inspirational quotes, and "coming soon" teasers that rely more on mood and polish than on dense information.",
+        "description": "This layout uses a strong inner frame to isolate the core message from the full-bleed background, giving the entire Story slide a 'gallery-print' feel that instantly communicates premium quality. The photo or video fills the screen edge-to-edge, but a semi-transparent bottom gradient fades it just enough to keep the headline crisp. Inside the frame there's room for a single, short line of copy—usually a campaign name, high-impact slogan, or product reveal—and a logo positioned below for clear brand attribution. All colors, fonts, and even reading direction (LTR / RTL) are tokenized so the template can be localized in seconds without touching the HTML. Reach for this template when you need a luxury or tech vibe, when the imagery already tells most of the story, or when you're building a hero slide that will be followed by in-feed placements carrying deeper details. Typical use cases include collection launches, brand heritage moments, inspirational quotes, and 'coming soon' teasers that rely more on mood and polish than on dense information.",
         "type": "image",
-        "file": "./product-launch.html",
+        "file": "./instagram-story-framed-template.html",
         "location_of_primary_subject": "center of the image, clear of the top edge",
         "inputs": [
         {
@@ -532,7 +532,7 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
   </div>
   
   <script>
-    console.log("ℹ️ [ProductLaunch] Template loaded successfully");
+    console.log("ℹ️ [Instagram Story Framed Template] Template loaded successfully");
 
     // Initialize shared logic (styles, fonts, direction)
     initializeTemplate({
