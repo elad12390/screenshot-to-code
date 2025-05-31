@@ -199,7 +199,7 @@ Do not include markdown "```" or "```svg" at the start or end.
 """
 
 HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
-<role>You are an expert CSS developer specializing in creating template-based responsive designs.</role>
+<role>You are an expert HTML/CSS developer specializing in creating template-based responsive designs. You are generating generic templates for all types of businesses. Your templates should be versatile and adaptable, avoiding any specific references to the original business name, industry, or branding elements seen in a screenshot. Think about how this template will work for a wide variety of use cases and users.</role>
 
 <requirements>
     <requirement>Make sure the app looks exactly like the screenshot.</requirement>
@@ -310,6 +310,247 @@ HTML_CSS_TEMPLATE_SYSTEM_PROMPT = """
     <library>You can use Google Fonts</library>
     <library>Font Awesome for icons: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link></library>
 </libraries>
+
+<metadata_explanation>
+    The metadata is important, it is used to identify the template and to provide context for the template.
+    The name of the template must be generic and not specific to a specific business or service, it cannot be describing the image itself it must be a generic name which describes when the template should be used and it's purpose.
+    The description must be long and detailed, it must be a description of the template, and when it should be used, which post types it is best for, etc.
+    The type must be "image" or "video" or "audio"
+    The file must be the path to the file, it must be a relative path to the file.
+    The location_of_primary_subject must be the location of the primary subject in the image, it must be a description of the location of the primary subject in the image.
+    The inputs must be a list of inputs that are required to create the template.
+    
+    The available types of inputs are:
+        - image
+            - if using this, please provide a description of what can be used in the image - is this a background image? is this an image of the main subject?
+        - video
+            - if using this, please provide a description of what can be used in the video - is this a background video? is this a video of the main subject?
+        - text
+            - add an elaborate description of what can be used in the text - is this a headline? is this a description? is this a caption? what is the text length?
+        - logo
+        - primary_color
+        - secondary_color
+        - font
+        - h1_font_size
+        - h1_font_weight
+        - h1_font_variant
+        - h2_font_size
+        - h2_font_weight
+        - h2_font_variant
+        - main_text_font_size
+        - main_text_font_weight
+        - main_text_font_variant
+        - image_disclaimer
+        - description_disclaimer
+        - description_custom_text
+</metadata_explanation>
+
+<example_output>
+<!DOCTYPE html>
+<html lang="en" dir="{{dir}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Story Framed Template</title>
+  
+  <!-- Metadata
+    {
+        "id": "product-launch",
+        "name": "Instagram Story Framed Template",
+        "description": "This layout uses a strong inner frame to isolate the core message from the full-bleed background, giving the entire Story slide a 'gallery-print' feel that instantly communicates premium quality. The photo or video fills the screen edge-to-edge, but a semi-transparent bottom gradient fades it just enough to keep the headline crisp. Inside the frame there's room for a single, short line of copy—usually a campaign name, high-impact slogan, or product reveal—and a logo positioned below for clear brand attribution. All colors, fonts, and even reading direction (LTR / RTL) are tokenized so the template can be localized in seconds without touching the HTML. Reach for this template when you need a luxury or tech vibe, when the imagery already tells most of the story, or when you're building a hero slide that will be followed by in-feed placements carrying deeper details. Typical use cases include collection launches, brand heritage moments, inspirational quotes, and "coming soon" teasers that rely more on mood and polish than on dense information.",
+        "type": "image",
+        "file": "./product-launch.html",
+        "location_of_primary_subject": "center of the image, clear of the top edge",
+        "inputs": [
+        {
+            "name": "media_source",
+            "type": "image",
+            "description": "URL of the background image or MP4 video that fills the Story frame.",
+            "default": "https://picsum.photos/1920/1060",
+            "min_text_length": 1,
+            "max_text_length": 100000000
+        },
+        {
+            "name": "main_header",
+            "type": "text",
+            "description": "Primary headline displayed inside the frame.",
+            "default": "Product Launch",
+            "min_text_length": 1,
+            "max_text_length": 50
+        },
+        {
+            "name": "logo",
+            "type": "logo",
+            "description": "Brand-logo image URL shown beneath the headline (optional).",
+            "default": "",
+            "min_text_length": 0,
+            "max_text_length": 60
+        },
+        {
+            "name": "font_family",
+            "type": "font",
+            "description": "Google-font family name used for all text.",
+            "default": "Roboto",
+            "min_text_length": 1,
+            "max_text_length": 50
+        },
+        {
+            "name": "primary_color",
+            "type": "color",
+            "description": "Primary gradient or accent color (HEX or CSS value).",
+            "default": "#777777",
+            "min_text_length": 1,
+            "max_text_length": 20
+        },
+        {
+            "name": "secondary_color",
+            "type": "color",
+            "description": "Secondary gradient color that blends with the primary.",
+            "default": "#555555",
+            "min_text_length": 1,
+            "max_text_length": 20
+        },
+        {
+            "name": "dir",
+            "type": "select",
+            "options": ["ltr", "rtl"],
+            "description": "Reading direction: choose "ltr" for left-to-right or "rtl" for right-to-left languages.",
+            "default": "ltr",
+            "min_text_length": 3,
+            "max_text_length": 3
+        }
+        ]
+    } 
+  -->
+  
+  
+  
+  
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Link Shared CSS -->
+  <link id="shared-styles" rel="stylesheet" href="../../shared/shared-template-styles.css">
+
+  <!-- Shared JS Logic -->
+  <script id="shared-logic" src="../../shared/shared-template-logic.js"></script>
+  
+  <style>
+    /* --- Template Specific Styles --- */
+
+    .template-container {
+      /* Specific padding for this template */
+      padding: calc(20 * var(--vmin-divisor));
+    }
+    
+    .media-container {
+        /* Specific background */
+        background-image: url('{{media_source}}');
+    }
+    
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+      z-index: 2;
+    }
+    
+    /* Framed Content Container */
+    .frame-container {
+      /* border: var(--border-width-base) solid var(--color-text); Use base var */
+      border-radius: calc(var(--border-radius-base) + 10px); /* Use base var */
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      padding: calc(50 * var(--vmin-divisor));
+      width: 100%;
+      height: 100%;
+    }
+    
+    .main-heading {
+      font-size: var(--font-size-base-large); /* Use base var */
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text);
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      padding: 0 var(--spacing-base-medium); /* Use base var */
+      line-height: var(--line-height-base); /* Use base var */
+      direction: var(--direction);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* RTL support for main heading */
+    [dir="rtl"] .main-heading {
+      direction: rtl;
+    }
+    
+    .logo-container {
+      background-color: transparent;
+      padding: var(--spacing-base-small); /* Use base var */
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: var(--logo-width-base); /* Use base var */
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+    }
+    
+    .logo {
+      /* Inherits base styles from shared CSS */
+      /* Specific overrides for this template */
+      width: 100%; 
+      height: 100%;
+      object-fit: cover;
+      /* visibility: hidden; -> Moved to shared */
+    }
+  </style>
+</head>
+<body>
+  <div class="template-container">
+    <div class="media-container">
+      <!-- Background image applied via CSS -->
+    </div>
+    
+    <div class="gradient-overlay">
+      <!-- Gradient overlay applied via CSS -->
+    </div>
+    
+    <div class="frame-container">
+      <h1 class="main-heading">{{main_header}}</h1>
+      <div class="logo-container">
+        <img class="logo" src="{{logo}}" alt="Logo">
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    console.log("ℹ️ [ProductLaunch] Template loaded successfully");
+
+    // Initialize shared logic (styles, fonts, direction)
+    initializeTemplate({
+      fontFamily: "{{font_family}}",
+      primaryColor: "{{primary_color}}",
+      secondaryColor: "{{secondary_color}}",
+      direction: "{{dir}}"
+    });
+
+    // Initialize logo visibility using shared function
+    initializeLogoVisibility('.logo');
+
+    // Template-specific JS can go here if needed in the future
+
+  </script>
+</body>
+</html> 
+</example_output>
 
 <output>
     Return only the full code in <html></html> tags.
